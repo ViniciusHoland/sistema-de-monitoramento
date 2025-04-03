@@ -1,0 +1,317 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Fundo suave */
+body {
+  background-color: #f3f4f6;
+  padding: 20px;
+}
+
+h1{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.container-geral {
+  display: flex;
+  justify-content: space-between; /* Ajusta o espaçamento */
+  gap: 20px; /* Espaço entre os blocos */
+}
+
+
+/* Contêiner principal */
+.container-flex, .container-flex-campanha {
+  display: flex;
+  
+  gap: 20px;
+  
+}
+
+.container-flex-neuro {
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+
+}
+
+/* Estilização do CHAT */
+.input-list {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilizando os botões de atendentes */
+.adicionar, .adicionarCampanha, .adicionarNeuro {
+  width: 150px;
+  height: 45px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+/* Status cores */
+.input-group, .input-group-campanha, .input-group-neuro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  width: 220px; /* Aumenta a largura */
+  height: 50px; /* Aumenta a altura */
+}
+
+.input-group select, .input-group-campanha select , .input-group-neuro select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+
+/* Melhorando a exibição dos atendentes */
+
+/* Itens da lista */
+.atendente-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+
+.lista-container {
+  display: flex;
+  flex-direction: column; /* Coloca a lista e o botão em coluna */
+  align-items: center; /* Centraliza os itens */
+  gap: 15px; /* Espaçamento entre a lista e o botão */
+}
+
+
+.lista-atendentes {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+
+  width: 270px; /* Aumenta a largura */
+  max-height: 550px; /* Aumenta a altura */
+  font-size: 18px; /* Aumenta o tamanho da fonte */
+}
+
+/* Estilizando o botão de deletar */
+#deletar, #deletarNeuro, #deletarCampanha {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 270px; /* Ajusta a largura para bater com a lista */
+  height: 50px; /* Aumenta a altura */
+  font-size: 18px; /* Aumenta o tamanho do texto */
+}
+
+#deletar:hover, #deletarNeuro:hover {
+  background-color: darkred;
+}
+
+
+
+.status-select {
+  height: 50px;
+  font-size: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container-flex {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+
+/* Estilizando o botão flutuante */
+.chat-floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s;
+}
+
+.chat-floating-button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilizando o popup do chat */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  z-index: 1000;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.close-chat {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Estilizando o formulário */
+#chatFormPopup input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#chatFormPopup button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chatFormPopup button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilizando a área de mensagens */
+.chat-messages {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.clear-chat-button {
+  width: 10%;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+
+.button-campanha {
+  display: none; /* Oculta por padrão */
+
+  top: 25px;
+  right: 1px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.button-campanha.ativo {
+  display: block; /* Mostra quando a classe ativo for adicionada */
+}
+
+#button-campanha-poup {
+  background: #ff4d4d; /* Vermelho suave */
+  color: white; /* Cor do texto */
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%; /* Deixa o botão redondo */
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right:px;
+  transition: background 0.3s ease;
+}
+
+#button-campanha-poup:hover {
+  background: #cc0000; /* Tom mais escuro ao passar o mouse */
+}
+
+#button-campanha-poup:active {
+  background: #990000; /* Tom ainda mais escuro ao clicar */
+}
+
+#button-campanha-open {
+  background: #007bff; /* Azul chamativo */
+  color: white; /* Texto branco */
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%; /* Botão redondo */
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+#button-campanha-open:hover {
+  background: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
