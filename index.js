@@ -1,8 +1,11 @@
 /*
 
+
+
     configuração do database fica aqui, retirado por segurança
 
 */
+
 
 // Inicializar o Firebase
 const app = firebase.initializeApp(firebaseConfig);
@@ -552,6 +555,14 @@ filaAtendentesRef.on("child_changed", (snapshot) => {
     atualizando = false;
 });
 
+function getHorarioEmMs(horaCompleta) {
+    // horaCompleta exemplo: "14/04/2025, 13:23:07"
+    const [, hora] = horaCompleta.split(", ");
+    const [horas, minutos, segundos] = hora.split(":").map(Number);
+
+    // Convertendo para milissegundos desde meia-noite
+    return (horas * 3600 + minutos * 60 + segundos) * 1000;
+}
 
 
 function getProximoAtendente(atendentes) {
@@ -560,18 +571,25 @@ function getProximoAtendente(atendentes) {
         .filter((a) => a.status === "Online")
         .sort((a, b) => {
 
+            //console.log("a: " + a.nome + " interação: " + a.ultimaInteracao);
+            //console.log("b: " + b.nome + " interação: " + b.ultimaInteracao);
+            
             // a vem antes de b
             if(!a.isQuee && b.isQuee) return -1
 
             // b vem antes de a
             if(a.isQuee && !b.isQuee) return 1
 
+            const horaA = getHorarioEmMs(a.ultimaInteracao)
+            const horaB = getHorarioEmMs(b.ultimaInteracao)
 
-            return (new Date(a.ultimaInteracao).getTime() - new Date(b.ultimaInteracao).getTime())
+
+            return (horaA - horaB)
 
         })[0]       
 
 }
+
 
 
 function atualizarProximo() {
@@ -587,6 +605,8 @@ function atualizarProximo() {
             console.log(atendentesFilter)
           
             const proximo = getProximoAtendente(atendentesFilter);
+
+            //console.log(proximo)
 
 
             //console.log("Próximo atendente:", proximo ? proximo.nome : "Nenhum atendente disponível");
